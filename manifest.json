@@ -1,0 +1,45 @@
+{
+    "name": "my first extension",
+    "version": "0.0.1",
+    "description": "This is my first extension",
+    "manifest_version": 2,
+    "icons": {
+        "128": "image/120x120.png"
+    },
+
+    "browser_action": {
+        "default_title": "祝事业顺利~",
+        "default_popup": "popup.html"
+    },
+
+    "permissions": [
+        "bookmarks",
+        "storage",
+        "tabs"
+    ],
+
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ],
+        "persistent": false
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://product.dangdang.com/*"],
+            "js": ["js/dangdang.js"],
+            "run_at": "document_end"
+        },
+        
+        {
+            "matches": [
+                "*://*.zhaopin.com/*",
+                "*://i.zhaopin.com/resume*"
+            ],
+            "js": ["js/content.js"],
+            "run_at": "document_end"
+        }
+    ]
+
+}
