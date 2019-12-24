@@ -54,7 +54,7 @@ saveData.addEventListener('click', async () => {
         },
         (response) => {
             console.log('response to saveData: ', response)
-            alert(response)
+            // alert(response)
         }
     )
 })
@@ -73,6 +73,14 @@ getTitle.addEventListener('click', () => {
             document.getElementById('title').value = response
         }
     )
+})
+
+// 修改商品标题
+const inputTitle = document.querySelector('#title')
+inputTitle.addEventListener('change', () => {
+    const title = inputTitle.value
+
+    store.name = title
 })
 
 // 获取商品标价

@@ -2,6 +2,8 @@
     "name": "Chrome Extension Demo",
     "version": "0.0.1",
     "description": "演示/测试Chrome插件功能",
+    "author": "Kamas Lau",
+    "homepage_url": "https://www.liuyajie.com/",
     "manifest_version": 2,
     "icons": {
         "128": "image/120x120.png"
