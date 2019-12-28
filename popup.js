@@ -45,16 +45,16 @@ getBrief.addEventListener('click', () => {
  * 发送数据到API
  */
 const saveData = document.querySelector('#saveData')
-saveData.addEventListener('click', async () => {
+saveData.addEventListener('click', () => {
     // 发送到插件后台（js/background.js）进行API请求
-    await chrome.runtime.sendMessage(
+    chrome.runtime.sendMessage(
         {
             action: 'saveData',
             params: { ...store }
         },
         (response) => {
             console.log('response to saveData: ', response)
-            // alert(response)
+            alert(response)
         }
     )
 })

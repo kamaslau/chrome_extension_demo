@@ -10,18 +10,18 @@ chrome.bookmarks.onCreated.addListener(() => {
 
 // 内部通信
 chrome.runtime.onMessage.addListener(
-	async (request, sender, sendResponse) => {
+	(request, sender, sendResponse) => {
         // 保存数据
         if (request.action === 'saveData') {
             // console.log(request.params)
 
-            await api_request(request.params)
-            .then(
-                data => {
-                    console.log(data)
-                    sendResponse(data)
-                }
-            )
+            (async () => {
+                let data = await api_request(request.params)
+                console.log(data)
+                sendResponse(data)
+            })()
+
+            return true
         }
 	}
 )

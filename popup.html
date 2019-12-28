@@ -9,22 +9,75 @@
         <link rel="stylesheet" href="https://cdn.liuyajie.com/fontawesome/5.12.0/css/all.min.css">
         
         <style>
+            html {font-size:16px;}
+
             body {width:20rem;}
+
+            .form-group * {font-size:.875rem;margin-bottom:.75rem;height:2.25rem;line-height:2.25rem;}
+            label {margin-bottom:0;}
+            input {text-align:right;padding:.5rem .75rem;flex-grow:1;}
+
+            .container {width:95%;margin:0 auto;padding:0;}
+
+            figure {display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;margin:0 auto;}
+                figure>* {display:block;}
+                img {max-width:100%;max-height:100%;}
+                figcaption {color:#999;font-size:.75rem;margin-top:.5rem;}
+
         </style>
     </head>
 
     <body>
-        <img src="image/120x120.png" width="120">
-        <p>嘿，欢迎使用<a href="https://imakp.liuyajie.com/" target="_blank">礼聘</a></p>
+        <header>
+            <figure>
+                <img class="" src="image/branding.png">
+    
+                <figcaption>
+                    <p>刘亚杰的<a href="image/qrcode.jpg" target="_blank">冰山书榜 - 好书采集器</a></p>
+                </figcaption>
+            </figure>
+        </header>
 
-        <ul id="info-list">
-            <li><button id="getTitle">获取标题</button><input id="title"></li>
-            <li><button id="getTagPrice">获取原价</button><input id="tag_price" type="number" step="0.01"></li>
-            <li><button id="getBarcode">获取条形码</button><input id="barcode" size="13"></li>
-        </ul>
+        <main>
+            <div id="content" class="container">
 
-        <button id="getBrief"><i class="fal fa-info"></i> 获取摘要</button>
-        <button id="saveData"><i class="fal fa-save"></i> 保存数据</button>
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label id="getTitle">标题</label>
+
+                            <div class="input-group">
+                                <input id="title" placeholder="最多50个字符" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="getTagPrice">原价/标价</label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">￥</span>
+                                </div>
+                                <input id="tag_price" type="number" step="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="getBarcode">条形码</label>
+
+                            <div class="input-group">
+                                <input id="barcode" size="13" placeholder="13位条形码/ISBN号" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+        
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li><button id="getBrief" class="btn btn-light"><i class="fad fa-file-search"></i> 智能摘要</button></li>
+                    <li><button id="saveData" class="btn btn-dark"><i class="fad fa-books"></i> 放进书架</button></li>
+                </ul>        
+            </div>
+        </main>
 
         <script src="popup.js"></script>
     </body>
