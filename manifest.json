@@ -6,20 +6,13 @@
     "homepage_url": "https://www.liuyajie.com/",
     "manifest_version": 2,
     "icons": {
-        "128": "image/120x120.png"
+        "128": "image/128x128.png"
     },
 
     "browser_action": {
         "default_title": "祝事业顺利~",
         "default_popup": "popup.html"
     },
-
-    "permissions": [
-        "bookmarks",
-        "storage",
-        "tabs",
-        "https://api.imakp.liuyajie.com/"
-    ],
 
     "background": {
         "scripts": [
@@ -43,6 +36,13 @@
             "js": ["js/content.js"],
             "run_at": "document_end"
         }
+    ],
+
+    "permissions": [
+        "bookmarks",
+        "storage",
+        "tabs",
+        "https://api.imakp.liuyajie.com/"
     ]
 
 }
