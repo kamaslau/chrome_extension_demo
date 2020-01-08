@@ -21,6 +21,41 @@
     },
 
     {
+      "name": "Bootstrap",
+      "url": "https://getbootstrap.com/"
+    },
+
+    {
+      "name": "Font Awesome",
+      "url": "https://fontawesome.com/"
+    },
+
+    {
+      "name": "Udemy",
+      "url": "https://www.udemy.com/"
+    },
+
+    {
+      "name": "JavaScript | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+    },
+
+    {
+      "name": "阿里云",
+      "url": "https://www.aliyun.com/"
+    },
+
+    {
+      "name": "知乎",
+      "url": "https://www.zhihu.com/"
+    },
+
+    {
+      "name": "当当",
+      "url": "https://www.dangdang.com/"
+    },
+
+    {
       "name": "Kamas Lau",
       "url": "https://www.liuyajie.com/"
     }
