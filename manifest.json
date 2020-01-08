@@ -9,6 +9,10 @@
         "128": "image/128x128.png"
     },
 
+    "chrome_url_overrides" : {
+        "newtab": "new_tab.html"
+    },
+
     "browser_action": {
         "default_title": "祝事业顺利~",
         "default_popup": "popup.html"
