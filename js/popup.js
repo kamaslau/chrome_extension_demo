@@ -8,7 +8,16 @@ const store = {
 }
 
 window.onload = () => {
-    current_tab = getCurrentTab()
+  current_tab = getCurrentTab()
+
+  // 转到插件选项页
+  document.querySelector('#to-options').addEventListener('click',() => {
+    if (chrome.runtime.openOptionsPage) {
+      chrome.runtime.openOptionsPage()
+    } else {
+      window.open(chrome.runtime.getURL('options.html'))
+    }
+  })
 }
 
 // 获取当前页面（即浏览器标签页）

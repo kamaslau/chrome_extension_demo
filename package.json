@@ -1,15 +1,14 @@
 {
-  "name": "chrome-extension",
-  "version": "1.0.0",
+  "name": "chrome-extension-demo",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kamas Lau <kamaslau@outlook.com>",
   "license": "MIT",
   "dependencies": {
-    "@types/chrome": "0.0.88",
+    "@types/chrome": "0.0.91",
     "types": "^0.1.1"
   }
 }

@@ -1,6 +1,16 @@
 {
   "content": [
     {
+      "name": "Chrome Extension Official Document",
+      "url": "https://developer.chrome.com/extensions/"
+    },
+
+    {
+      "name": "Chrome Extension Local Management",
+      "url": "chrome://extensions/"
+    },
+
+    {
       "name": "Nuxt.js",
       "url": "https://nuxtjs.org/"
     },
