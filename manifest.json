@@ -46,7 +46,7 @@
         "bookmarks",
         "storage",
         "tabs",
-        "https://api.imakp.liuyajie.com/"
+        "*://*.liuyajie.com/"
     ],
 
     "options_page": "options.html"

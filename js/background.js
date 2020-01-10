@@ -1,4 +1,5 @@
 // https://developer.chrome.com/extensions/background_pages
+// https://developer.chrome.com/extensions/api_index
 
 console.log('background.js loaded')
 

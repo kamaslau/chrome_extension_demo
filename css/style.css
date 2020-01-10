@@ -1,6 +1,7 @@
 html {font-size:16px;}
 
-body {width:20rem;}
+ul {list-style:none;}
+a {text-decoration:none;}
 
 .form-group * {font-size:.875rem;margin-bottom:.75rem;height:2.25rem;line-height:2.25rem;}
 label {margin-bottom:0;}

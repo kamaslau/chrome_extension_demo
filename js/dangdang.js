@@ -22,7 +22,7 @@ const getBarcode = () => {
 
     // 轮询列表项DOM列表，查找格式为13位数字的数据项
     const isbn_pattern = /\d{13}/
-    details.forEach((item, index, list) => {
+    details.forEach(item => {
         const isbn_match = item.innerText.match(isbn_pattern)
         if (isbn_match) {value = isbn_match[0]}
     })
@@ -30,8 +30,9 @@ const getBarcode = () => {
     return value
 }
 
-chrome.extension.onMessage.addListener(
-    function (request, sender, sendResponse) {
+// 响应通信
+chrome.runtime.onMessage.addListener(
+    (request, sender, sendResponse) => {
         // 获取摘要信息
         if (request.action === 'getBrief') {
             const value = {
