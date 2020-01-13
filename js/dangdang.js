@@ -16,6 +16,20 @@ const getTagPrice = () => {
     return value.replace(/[^0-9.]*/g, '') // 仅保留数字和小数点
 }
 
+const getPublishYear = () => {
+    let value
+    const details = document.querySelectorAll('#product_info>.messbox_info>span.t1:not(#author)')
+
+    // 轮询列表项DOM列表，查找格式为4位数字的数据项
+    const year_pattern = /\d{4}/
+    details.forEach(item => {
+        const year_match = item.innerText.match(year_pattern)
+        if (year_match) {value = year_match[0]}
+    })
+
+    return value
+}
+
 const getBarcode = () => {
     let value
     const details = document.querySelectorAll('#detail_describe>ul li')
@@ -39,6 +53,7 @@ chrome.runtime.onMessage.addListener(
                 title: getTitle(),
                 tag_price: getTagPrice(),
                 barcode: getBarcode(),
+                publish_year: getPublishYear()
             }
 
             if (Object.keys(value).length > 0) {

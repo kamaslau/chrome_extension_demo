@@ -23,24 +23,35 @@ chrome.bookmarks.onCreated.addListener(() => {
 // 内部通信
 chrome.runtime.onMessage.addListener(
 	(request, sender, sendResponse) => {
-	    console.log('chrome.runtime.onMessage')
+	    console.log('chrome.runtime.onMessage: ')
+      // console.log('request.params: ', request.params)
 
-    // 保存数据
-    if (request.action === 'saveData') {
-        // console.log(request.params)
+      // 获取数据
+      if (request.action === 'getItem') {
+          (async () => {
+              const data = await api_request('item_template/detail', request.params)
 
-        (async () => {
-            let data = await api_request(request.params)
-            console.log(data)
-            sendResponse(data)
-        })()
+              console.log('getItem data: ', data)
+              sendResponse(data)
+          })()
 
-        return true
-    }
+          return true
+
+      } else if (request.action === 'saveData') { // 保存数据
+          (async () => {
+              const data = await api_request('item_template/create', request.params)
+
+              console.log('saveData data: ', data)
+              sendResponse(data)
+          })()
+
+          return true
+        }
 	}
 )
 
 // API公共参数
+const api_root = 'https://api.imakp.liuyajie.com/'
 const common_params = {
     'app_type': 'biz',
     'operator_id': 1
@@ -49,7 +60,7 @@ const common_params = {
 let params = {}
 
 // 请求方法
-const api_request = async inputs => {
+const api_request = async (api_url, inputs) => {
     // 请求API
     const params = {
         ...common_params,
@@ -65,26 +76,20 @@ const api_request = async inputs => {
         }
     )
 
-    let message = ''
+    let api_result = ''
 
     await new Promise((resolve, reject) => {
         const request = new XMLHttpRequest()
 
-        request.open('post', 'https://api.imakp.liuyajie.com/item_template/create', true)
+        request.open('post', api_root + api_url, true)
         
         request.onload = () => {
             
             if (request.status === 200) {
-                const result = JSON.parse(request.response)
-                // console.log(result)
+                api_result = JSON.parse(request.response)
+                // console.log(api_result)
 
-                if (result.status === 200) {
-                    message = result.content.message
-                }
-                else {
-                    message = result.content.error.message
-                }
-                resolve(message)
+                resolve(api_result)
             }
             else {
                 reject(Error(request.statusText))
@@ -98,5 +103,5 @@ const api_request = async inputs => {
         request.send(form_data)
     })
 
-    return message // end Promise
+    return api_result // end Promise
 } // end function api_request
