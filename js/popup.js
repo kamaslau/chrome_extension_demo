@@ -1,11 +1,13 @@
 console.log('popup.js loaded')
 
-const store = {
+const initState = {
     'name': '', // 标题
     'tag_price': 0.00, // 标签价/原价
     'barcode': '', // 条形码/ISBN
     'publish_year': '' // 出版年份
 }
+let store
+
 const commit = {
   updateName: (value) => {
     store.name = value
@@ -31,6 +33,7 @@ const commit = {
 let current_tab // 当前页面（即浏览器标签页）信息
 let barcodeInput // 条形码字段
 window.onload = () => {
+  store = { ...initState }
   current_tab = getCurrentTab()
 
   // 转到插件选项页的链接
@@ -42,17 +45,9 @@ window.onload = () => {
     }
   })
 
-  // 重置表单、同步存储，及状态
+  // 重置按钮
   document.querySelector('#resetForm').addEventListener('click', () => {
-    commit.updateName( '' )
-    commit.updateTagPrice( '' )
-    commit.updateBarcode( '' )
-    commit.updatePublishYear( '' )
-
-    // 调用异步storageAPI
-    chrome.storage.sync.set(store, () => {
-      console.log('store saved to storage as: ', store)
-    })
+    resetAll()
   })
 
   // 监控条形码字段输入事件
@@ -62,6 +57,19 @@ window.onload = () => {
   barcodeInput.addEventListener('change', event => getItem(event.target.value))
 
   restoreHistory()
+}
+
+// 全局重置；重置按钮表单、异步存储，及状态
+const resetAll = () => {
+  commit.updateName( '' )
+  commit.updateTagPrice( '' )
+  commit.updateBarcode( '' )
+  commit.updatePublishYear( '' )
+
+  // 调用异步storageAPI
+  chrome.storage.sync.set(store, () => {
+    console.log('store saved to storage as: ', store)
+  })
 }
 
 // 尝试获取并恢复历史数据到状态
@@ -100,7 +108,7 @@ const getCurrentTab = () => {
 // 根据条形码检查是否对应的商品已存在
 const getItem = (barcode) => {
   // console.log('getItem.barcode: ', barcode)
-  if (barcode.length !== 13) return
+  if (barcode && barcode.length !== 13) return
 
   // 发送到插件后台（js/background.js）进行API请求
   chrome.runtime.sendMessage(
@@ -190,6 +198,9 @@ saveData.addEventListener('click', () => {
 
           // 更新反馈
           updateScreen(message, style_class)
+
+          // 全局重置
+          resetAll()
         }
     )
 })
@@ -263,6 +274,6 @@ const updateScreen = (text, style_class) => {
         screen.className = 'alert'
         message.innerHTML = ''
       },
-      3000
+      2500
   )
 }
