@@ -46,6 +46,11 @@
     },
 
     {
+      "name": "GitHub",
+      "url": "https://www.github.com/"
+    },
+
+    {
       "name": "JavaScript | MDN",
       "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
     },
