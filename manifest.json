@@ -27,18 +27,24 @@
 
     "content_scripts": [
         {
-            "matches": ["*://product.dangdang.com/*"],
             "js": ["js/dangdang.js"],
-            "run_at": "document_end"
+            "run_at": "document_end",
+            "matches": ["*://product.dangdang.com/*"]
         },
-        
+
         {
+            "js": ["js/jiushujie.js"],
+            "run_at": "document_end",
+            "matches": ["*://www.jiushujie.com/sell/*"]
+        },
+
+        {
+            "js": ["js/zhilian.js"],
+            "run_at": "document_end",
             "matches": [
                 "*://*.zhaopin.com/*",
                 "*://i.zhaopin.com/resume*"
-            ],
-            "js": ["js/content.js"],
-            "run_at": "document_end"
+            ]
         }
     ],
 

@@ -99,3 +99,5 @@ chrome.runtime.onMessage.addListener(
         }
     }
 )
+
+// end dangdang.js

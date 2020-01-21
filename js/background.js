@@ -105,3 +105,5 @@ const api_request = async (api_url, inputs) => {
 
     return api_result // end Promise
 } // end function api_request
+
+// end background.js
