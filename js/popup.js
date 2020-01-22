@@ -32,6 +32,7 @@ const commit = {
 
 let current_tab // 当前页面（即浏览器标签页）信息
 let barcodeInput // 条形码字段
+
 window.onload = () => {
   store = { ...initState }
   current_tab = getCurrentTab()
@@ -139,6 +140,8 @@ const getItem = (barcode) => {
         } else {
           message += '暂无记录'
           style_class = 'light'
+
+          dom_get_brief() // 解析DOM
         }
 
         // 更新反馈
@@ -147,26 +150,29 @@ const getItem = (barcode) => {
   )
 }
 
+// 解析DOM-获取详情
+const dom_get_brief = () => {
+  chrome.tabs.sendMessage(
+      current_tab.id,
+      {action: "getBrief"},
+      (response) => {
+        // console.log(response)
+        commit.updateName( response.title )
+        commit.updateTagPrice( response.tag_price )
+        commit.updateBarcode( response.barcode )
+        commit.updatePublishYear( response.publish_year )
+
+        // 调用异步storageAPI
+        chrome.storage.sync.set(store, () => {
+          console.log('store saved to storage as: ', store)
+        })
+      }
+  )
+}
+
 // 获取摘要信息
 const getBrief = document.querySelector('#getBrief')
-getBrief.addEventListener('click', () => {
-    chrome.tabs.sendMessage(
-        current_tab.id,
-        {action: "getBrief"},
-        (response) => {
-            // console.log(response)
-          commit.updateName( response.title )
-          commit.updateTagPrice( response.tag_price )
-          commit.updateBarcode( response.barcode )
-          commit.updatePublishYear( response.publish_year )
-
-          // 调用异步storageAPI
-          chrome.storage.sync.set(store, () => {
-            console.log('store saved to storage as: ', store)
-          })
-        }
-    )
-})
+getBrief.addEventListener('click', () => dom_get_brief())
 
 /**
  * 保存数据
