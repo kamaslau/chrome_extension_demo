@@ -67,10 +67,11 @@
                 </form>
 
                 <!-- 可用操作区 -->
-                <ul class="list-unstyled d-flex justify-content-between">
-                    <li><button id="getBrief" class="btn btn-light" title="解析DOM"><i class="fad fa-file-search"></i> 智能摘要</button></li>
-                    <li><button id="resetForm" class="btn btn-light" title="清空表单"><i class="fad fa-undo"></i></button></li>
-                    <li><button id="saveData" class="btn btn-dark" title="保存数据"><i class="fad fa-books"></i> 放进书架</button></li>
+                <ul class="item-ops list-unstyled d-flex justify-content-between">
+                    <li><button id="tryBarcode" class="btn btn-dark btn-block" title="智能解析：从DOM中解析条形码，并请求API以判断是否已有相应数据记录"><i class="fad fa-file-search"></i></button></li>
+                    <li><button id="getBrief" class="btn btn-light btn-block" title="强制解析：直接从DOM中解析所有信息"><i class="fad fa-file-alt"></i></button></li>
+                    <li><button id="resetForm" class="btn btn-light btn-block" title="清空表单"><i class="fad fa-eraser"></i></button></li>
+                    <li><button id="saveData" class="btn btn-dark btn-block" title="保存数据"><i class="fad fa-save"></i></button></li>
                 </ul>
                 
             </div>

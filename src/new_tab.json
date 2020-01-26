@@ -26,6 +26,11 @@
     },
 
     {
+      "name": "NPM",
+      "url": "https://www.npmjs.com/"
+    },
+
+    {
       "name": "CodeIgniter",
       "url": "https://codeigniter.com/"
     },
@@ -73,6 +78,11 @@
     {
       "name": "旧书街",
       "url": "http://www.jiushujie.com/"
+    },
+
+    {
+      "name": "淘宝联盟",
+      "url": "https://pub.alimama.com/"
     },
 
     {

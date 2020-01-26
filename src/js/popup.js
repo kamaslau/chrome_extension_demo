@@ -152,6 +152,8 @@ const getItem = (barcode) => {
 
 // 解析DOM-获取详情
 const dom_get_brief = () => {
+  updateScreen('数据解析中', 'light')
+
   chrome.tabs.sendMessage(
       current_tab.id,
       {action: "getBrief"},
@@ -181,6 +183,18 @@ getBrief.addEventListener('click', () => dom_get_brief())
  */
 const saveData = document.querySelector('#saveData')
 saveData.addEventListener('click', () => {
+  if (
+      !store.barcode || store.barcode.length !== 13 ||
+      !store.name ||
+      !store.tag_price || store.tag_price.length < 4 ||
+      !store.publish_year || store.publish_year.length !== 4
+  ) {
+    // 更新反馈
+    updateScreen('需正确填写所有字段', 'danger')
+
+    return
+  }
+
     chrome.runtime.sendMessage(
         {
             action: 'saveData',
@@ -188,18 +202,16 @@ saveData.addEventListener('click', () => {
         },
         (response) => {
             console.log('response to saveData: ', response)
-          const content = response.content
+            const content = response.content
 
           let message, style_class
 
           if (response.status === 200) {
             message = content.message
             style_class = 'success'
-
           } else {
             message = content.error.message
             style_class = 'danger'
-
           }
 
           // 更新反馈
@@ -244,16 +256,31 @@ getTagPrice.addEventListener('click', () => {
 // 获取商品条形码
 const getBarcode = document.querySelector('#getBarcode')
 getBarcode.addEventListener('click', () => {
-
     chrome.tabs.sendMessage(
         current_tab.id,
         {action: 'getBarcode'},
         (response) => {
             // console.log(response)
             document.getElementById('barcode').value = response
-            getItem(response)
         }
     )
+})
+
+// 获取商品条形码，并尝试请求API获取已有的数据（若有）
+const tryBarcode = document.querySelector('#tryBarcode')
+tryBarcode.addEventListener('click', () => {
+  chrome.tabs.sendMessage(
+      current_tab.id,
+      {action: 'getBarcode'},
+      (response) => {
+        // console.log(response)
+        document.getElementById('barcode').value = response
+
+        updateScreen('远程数据获取中', 'light')
+
+        getItem(response)
+      }
+  )
 })
 
 // 手动修改商品标题

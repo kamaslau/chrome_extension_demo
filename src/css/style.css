@@ -1,5 +1,7 @@
 html {font-size:16px;}
 
+body {font-size:1rem;}
+
 ul {list-style:none;}
 a {text-decoration:none;color:inherit;}
 p {margin-bottom:0;}
@@ -19,3 +21,5 @@ main {padding:.5rem;}
 
 #footer {display:flex;justify-content:space-between;align-items:center;}
     #footer p {color:#999;}
+
+.item-ops li {flex-grow:1;}

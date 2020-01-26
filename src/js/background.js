@@ -16,7 +16,6 @@ chrome.runtime.onSuspend.addListener(() => {
 
 // 监听书签创建事件
 chrome.bookmarks.onCreated.addListener(() => {
-    alert('bookmark saved')
     console.log('chrome.bookmarks.onCreated')
 })
 
@@ -24,7 +23,7 @@ chrome.bookmarks.onCreated.addListener(() => {
 chrome.runtime.onMessage.addListener(
 	(request, sender, sendResponse) => {
 	    console.log('chrome.runtime.onMessage: ')
-      // console.log('request.params: ', request.params)
+      console.log('request.params: ', request.params)
 
       // 获取数据
       if (request.action === 'getItem') {
@@ -46,7 +45,7 @@ chrome.runtime.onMessage.addListener(
           })()
 
           return true
-        }
+      }
 	}
 )
 
@@ -62,7 +61,7 @@ let params = {}
 // 请求方法
 const api_request = async (api_url, inputs) => {
     // 请求API
-    const params = {
+    params = {
         ...common_params,
         ...inputs
     }
