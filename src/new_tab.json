@@ -11,13 +11,18 @@
     },
 
     {
-      "name": "Nuxt.js",
-      "url": "https://nuxtjs.org/"
+      "name": "Flutter Documentation",
+      "url": "https://flutter.dev/docs"
     },
 
     {
       "name": "Electron",
       "url": "https://www.electronjs.org/"
+    },
+
+    {
+      "name": "Nuxt.js",
+      "url": "https://nuxtjs.org/"
     },
 
     {
