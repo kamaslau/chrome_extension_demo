@@ -15,8 +15,9 @@ chrome.runtime.onSuspend.addListener(() => {
 })
 
 // 监听书签创建事件
-chrome.bookmarks.onCreated.addListener(() => {
-    console.log('chrome.bookmarks.onCreated')
+// https://developer.chrome.com/extensions/bookmarks#event-onCreated
+chrome.bookmarks.onCreated.addListener((id, bookmark) => {
+    console.log('chrome.bookmarks.onCreated: ', id, bookmark)
 })
 
 // 内部通信
