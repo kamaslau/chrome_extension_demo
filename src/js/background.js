@@ -22,32 +22,32 @@ chrome.bookmarks.onCreated.addListener((id, bookmark) => {
 
 // 内部通信
 chrome.runtime.onMessage.addListener(
-	(request, sender, sendResponse) => {
-	    console.log('chrome.runtime.onMessage: ')
-      console.log('request.params: ', request.params)
+    (request, sender, sendResponse) => {
+        console.log('chrome.runtime.onMessage: ')
+        console.log('request.params: ', request.params)
 
-      // 获取数据
-      if (request.action === 'getItem') {
-          (async () => {
-              const data = await api_request('item_template/detail', request.params)
+        // 获取数据
+        if (request.action === 'getItem') {
+            (async () => {
+                const data = await api_request('item_template/detail', request.params)
 
-              console.log('getItem data: ', data)
-              sendResponse(data)
-          })()
+                console.log('getItem data: ', data)
+                sendResponse(data)
+            })()
 
-          return true
+            return true
 
-      } else if (request.action === 'saveData') { // 保存数据
-          (async () => {
-              const data = await api_request('item_template/create', request.params)
+        } else if (request.action === 'saveData') { // 保存数据
+            (async () => {
+                const data = await api_request('item_template/create', request.params)
 
-              console.log('saveData data: ', data)
-              sendResponse(data)
-          })()
+                console.log('saveData data: ', data)
+                sendResponse(data)
+            })()
 
-          return true
-      }
-	}
+            return true
+        }
+    }
 )
 
 // API公共参数
@@ -82,16 +82,15 @@ const api_request = async (api_url, inputs) => {
         const request = new XMLHttpRequest()
 
         request.open('post', api_root + api_url, true)
-        
+
         request.onload = () => {
-            
+
             if (request.status === 200) {
                 api_result = JSON.parse(request.response)
                 // console.log(api_result)
 
                 resolve(api_result)
-            }
-            else {
+            } else {
                 reject(Error(request.statusText))
             }
         }

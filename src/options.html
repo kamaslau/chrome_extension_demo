@@ -13,10 +13,20 @@
 
 <body>
 <main>
-  <div id="content" class="container">
+  <div id="content" class="container col-md-8">
     
     <form>
       <fieldset>
+        <div class="form-group">
+          <label>链接打开方式</label>
+
+          <div class="input-group">
+            <select class="form-control" name="link_target" required>
+              <option value="_blank" selected>新标签页</option>
+              <option value="_self">当前标签页</option>
+            </select>
+          </div>
+        </div>
         
         <div class="form-group">
           <label>API根URL</label>

@@ -1,9 +1,10 @@
-html {font-size:16px;}
+html {font-size:16px;height:100%;}
 
-body {font-size:1rem;}
+body {font-size:1rem;display:flex;flex-direction:column;height:100%;}
 
 ul {list-style:none;}
 a {text-decoration:none;color:inherit;}
+    a:hover {background-color:#efefef;}
 p {margin-bottom:0;}
 
 .form-group * {font-size:.875rem;height:2.25rem;line-height:2.25rem;}
@@ -19,7 +20,7 @@ figure {display:flex;align-items:center;justify-content:center;flex-direction:co
 
 main {padding:.5rem;}
 
-#footer {display:flex;justify-content:space-between;align-items:center;}
+#footer {margin-top:auto;display:flex;justify-content:space-between;align-items:center;}
     #footer p {color:#999;}
 
 .item-ops li {flex-grow:1;}

@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang=zh-cn>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=0">
-		<title>我的新标签页</title>
-		
-		<link rel="stylesheet" href="https://cdn.liuyajie.com/normalize.css/normalize.css">
-		<link rel="stylesheet" href="https://cdn.liuyajie.com/bootstrap/4.4.1/bootstrap.min.css">
-		<link rel="stylesheet" href="https://cdn.liuyajie.com/fontawesome/5.12.0/css/all.min.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
 
-	<body>
-		<main>
-			<div id="content" class="container row">
-				<nav id="json" class="col col-md-6">
-					<h1>JSON 书签</h1>
-					<ul></ul>
-				</nav>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=0">
+	<title>我的新标签页</title>
 
-				<nav id="bookmarks" class="col col-md-6">
-					<h1>Chrome 书签</h1>
-					<ul></ul>
-				</nav>
-			</div>
-		</main>
+	<link rel="stylesheet" href="https://cdn.liuyajie.com/normalize.css/normalize.css">
+	<link rel="stylesheet" href="https://cdn.liuyajie.com/bootstrap/4.4.1/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.liuyajie.com/fontawesome/5.12.0/css/all.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
 
-		<script src="js/new_tab.js"></script>
-	</body>
+<body>
+	<main>
+		<div id="content" class="container row">
+
+			<nav id="json" class="col-2">
+				<h1>JSON</h1>
+				<ul></ul>
+			</nav>
+
+			<nav id="bookmarks" class="col-5">
+				<h1>书签</h1>
+				<ul></ul>
+			</nav>
+
+			<nav id="history" class="col-5">
+				<h1>浏览历史</h1>
+				<button id="clear_history" type="button">清空</button>
+
+				<ul></ul>
+			</nav>
+
+		</div>
+	</main>
+
+	<footer id="footer" class="container">
+		<a href="/options.html"><i class="fal fa-cog"></i> 设置</a>
+	</footer>
+
+	<script src="js/new_tab.js"></script>
+</body>
+
 </html>

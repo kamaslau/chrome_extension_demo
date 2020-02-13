@@ -1,88 +1,88 @@
 <!DOCTYPE html>
 <html lang=zh-cn>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=0">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=0">
 
-        <link rel="stylesheet" href="https://cdn.liuyajie.com/normalize.css/normalize.css">
-        <link rel="stylesheet" href="https://cdn.liuyajie.com/bootstrap/4.4.1/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdn.liuyajie.com/fontawesome/5.12.0/css/all.min.css">
-        <link rel="stylesheet" href="css/style.css">
-        <style>
-            body {width:20rem;}
-        </style>
-    </head>
+    <link rel="stylesheet" href="https://cdn.liuyajie.com/normalize.css/normalize.css">
+    <link rel="stylesheet" href="https://cdn.liuyajie.com/bootstrap/4.4.1/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.liuyajie.com/fontawesome/5.12.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {width:20rem;}
+    </style>
+</head>
 
-    <body>
-        <header>
-            <figure>
-                <img src="image/branding.png">
+<body>
+<header>
+    <figure>
+        <img src="image/branding.png">
+
+        <figcaption>
+            <p><a href="image/qrcode.jpg" target="_blank">冰山书榜</a> 馆员助手Pro 0.0.1</p>
+        </figcaption>
+    </figure>
+</header>
+
+<main>
+    <div id="content" class="container">
+
+        <!-- API操作反馈 -->
+        <div id="screen" class="alert">
+            <p id="message" class="text-center"></p>
+        </div>
+
+        <form>
+            <fieldset>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div id="getBarcode" class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-barcode"></i></span>
+                        </div>
     
-                <figcaption>
-                    <p><a href="image/qrcode.jpg" target="_blank">冰山书榜</a> 馆员助手Pro 0.0.1</p>
-                </figcaption>
-            </figure>
-        </header>
-
-        <main>
-            <div id="content" class="container">
-    
-                <!-- API操作反馈 -->
-                <div id="screen" class="alert">
-                    <p id="message" class="text-center"></p>
+                        <input id="barcode" size="13" value="9787" placeholder="条形码/ISBN号；13位数字" required>
+                    </div>
                 </div>
-    
-                <form>
-                    <fieldset>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div id="getBarcode" class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fal fa-barcode"></i></span>
-                                </div>
-            
-                                <input id="barcode" size="13" value="9787" placeholder="条形码/ISBN号；13位数字" required>
-                            </div>
-                        </div>
-    
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div id="getTitle" class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fal fa-book"></i></span>
-                                </div>
-    
-                                <input id="title" placeholder="标题；最多50个字符" required>
-                            </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div id="getTitle" class="input-group-prepend">
+                            <span class="input-group-text"><i class="fal fa-book"></i></span>
                         </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div id="getTagPrice" class="input-group-prepend">
-                                    <span class="input-group-text">￥</span>
-                                </div>
-                                
-                                <input id="tag_price" type="number" step="0.01" placeholder="原价/标价" required>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+                        <input id="title" placeholder="标题；最多50个字符" required>
+                    </div>
+                </div>
 
-                <!-- 可用操作区 -->
-                <ul class="item-ops list-unstyled d-flex justify-content-between">
-                    <li><button id="tryBarcode" class="btn btn-dark btn-block" title="智能解析：从DOM中解析条形码，并请求API以判断是否已有相应数据记录"><i class="fad fa-file-search"></i></button></li>
-                    <li><button id="getBrief" class="btn btn-light btn-block" title="强制解析：直接从DOM中解析所有信息"><i class="fad fa-file-alt"></i></button></li>
-                    <li><button id="resetForm" class="btn btn-light btn-block" title="清空表单"><i class="fad fa-eraser"></i></button></li>
-                    <li><button id="saveData" class="btn btn-dark btn-block" title="保存数据"><i class="fad fa-save"></i></button></li>
-                </ul>
-                
-            </div>
-        </main>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div id="getTagPrice" class="input-group-prepend">
+                            <span class="input-group-text">￥</span>
+                        </div>
+                        
+                        <input id="tag_price" type="number" step="0.01" placeholder="原价/标价" required>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <!-- 可用操作区 -->
+        <ul class="item-ops list-unstyled d-flex justify-content-between">
+            <li><button id="tryBarcode" class="btn btn-dark btn-block" title="智能解析：从DOM中解析条形码，并请求API以判断是否已有相应数据记录"><i class="fad fa-file-search"></i></button></li>
+            <li><button id="getBrief" class="btn btn-light btn-block" title="强制解析：直接从DOM中解析所有信息"><i class="fad fa-file-alt"></i></button></li>
+            <li><button id="resetForm" class="btn btn-light btn-block" title="清空表单"><i class="fad fa-eraser"></i></button></li>
+            <li><button id="saveData" class="btn btn-dark btn-block" title="保存数据"><i class="fad fa-save"></i></button></li>
+        </ul>
         
-        <footer id="footer" class="container">
-            <p>&copy;2020 <a href="https://www.liuyajie.com/" target="_blank">刘亚杰</a></p>
-            
-            <button id="to-options" class="btn btn-light"><i class="fal fa-cog"></i></button>
-        </footer>
+    </div>
+</main>
 
-        <script src="js/popup.js"></script>
-    </body>
+<footer id="footer" class="container">
+    <p>&copy;2020 <a href="https://www.liuyajie.com/" target="_blank">刘亚杰</a></p>
+    
+    <button id="to-options" class="btn btn-light"><i class="fal fa-cog"></i></button>
+</footer>
+
+<script src="js/popup.js"></script>
+</body>
 </html>

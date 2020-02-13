@@ -52,12 +52,13 @@
     ],
 
     "permissions": [
-        "clipboardRead",
-        "clipboardWrite",
         "bookmarks",
+        "history",
         "storage",
         "tabs",
-        "*://*.liuyajie.com/"
+        "chrome://favicon/",
+        "*://*.liuyajie.com/",
+        "*://*.kamaslau.com/"
     ],
 
     "options_page": "options.html",
