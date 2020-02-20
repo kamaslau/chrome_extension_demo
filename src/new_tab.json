@@ -1,6 +1,5 @@
 {
-  "content": [
-    {
+  "content": [{
       "name": "Chrome Extension Official Document",
       "url": "https://developer.chrome.com/extensions/"
     },
@@ -43,6 +42,11 @@
     {
       "name": "CodeIgniter",
       "url": "https://codeigniter.com/"
+    },
+
+    {
+      "name": "Laravel",
+      "url": "https://laravel.com/docs"
     },
 
     {
