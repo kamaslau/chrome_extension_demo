@@ -80,6 +80,21 @@
     },
 
     {
+      "name": "微信支付",
+      "url": "https://pay.weixin.qq.com/"
+    },
+
+    {
+      "name": "微信公众平台",
+      "url": "https://mp.weixin.qq.com/"
+    },
+
+    {
+      "name": "支付宝商家中心",
+      "url": "https://b.alipay.com/"
+    },
+
+    {
       "name": "知乎",
       "url": "https://www.zhihu.com/"
     },
