@@ -1,10 +1,13 @@
+/**
+ * @deprecated 当当相关功能已单独剥离为dangdang_crx插件
+ */
 console.log('dangdang.js loaded')
 
 window.onload = () => {
-    const input = document.createElement('p')
-    input.id = 'item_title'
-    input.innerText = '插件运行中'
-    document.querySelector('h1[title]').prepend(input)
+    // const input = document.createElement('p')
+    // input.id = 'item_title'
+    // input.innerText = '插件运行中'
+    // document.querySelector('h1[title]').prepend(input)
 }
 
 const getTitle = () => {
@@ -24,7 +27,9 @@ const getPublishYear = () => {
     const year_pattern = /\d{4}/
     details.forEach(item => {
         const year_match = item.innerText.match(year_pattern)
-        if (year_match) {value = year_match[0]}
+        if (year_match) {
+            value = year_match[0]
+        }
     })
 
     return value
@@ -38,7 +43,9 @@ const getBarcode = () => {
     const isbn_pattern = /\d{13}/
     details.forEach(item => {
         const isbn_match = item.innerText.match(isbn_pattern)
-        if (isbn_match) {value = isbn_match[0]}
+        if (isbn_match) {
+            value = isbn_match[0]
+        }
     })
 
     return value
