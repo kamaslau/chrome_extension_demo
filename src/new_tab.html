@@ -13,34 +13,71 @@
 </head>
 
 <body>
-	<main>
+	<main id="app">
 		<div id="content" class="container row">
 
-			<nav id="json" class="col-2">
-				<h1>JSON</h1>
-				<ul></ul>
-			</nav>
+			<div id="json" class="tab" :class="current_tab === 'json'? 'col-6' : 'col'" @mouseover="switch_tab('json')">
+				<header>
+					<h1>JSON</h1>
+				</header>
 
-			<nav id="bookmarks" class="col-5">
-				<h1>书签</h1>
-				<ul></ul>
-			</nav>
+				<section v-if="json.length > 0">
+					<ul>
+						<li v-for="(item, index) in json" :key="'json-' + index">
+							<a :title="item.name" :href="item.url" target="_blank">
+								<img :src="'chrome://favicon/' + item.url" /> {{item.name}}
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div>
 
-			<nav id="history" class="col-5">
-				<h1>浏览历史</h1>
-				<button id="clear_history" type="button">清空</button>
+			<div id="bookmark" class="tab" :class="current_tab === 'bookmark'? 'col-6' : 'col'"
+				@mouseover="switch_tab('bookmark')">
+				<header>
+					<h1>书签</h1>
+				</header>
 
-				<ul></ul>
-			</nav>
+				<section v-if="bookmarks.length > 0">
+					<ul>
+
+					</ul>
+				</section>
+			</div>
+
+			<div id="history" class="tab" :class="current_tab === 'history'? 'col-6' : 'col'"
+				@mouseover="switch_tab('history')">
+				<header class="row">
+					<h1 class="col">浏览历史</h1>
+
+					<span v-if="history.length > 0" @click.prevent="clear_history" class="btn btn-outline-primary"
+						type="button">清空</span>
+				</header>
+
+				<section v-if="history.length > 0">
+					<ul>
+						<li v-for="(item, index) in history" :key="'history-' + index">
+							<a class="item-link" :title="compose_history_title(item)" :href="item.url" target="_blank">
+								<img :src="'chrome://favicon/' + item.url" />
+								{{item.title}}
+								<span class="action-delete" title="删除此项" @click.prevent.stop="clear_history(item, index)">
+									<i class="fal fa-trash"></i>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div>
 
 		</div>
 	</main>
 
 	<footer id="footer" class="container">
-		<a href="/options.html"><i class="fal fa-cog"></i> 设置</a>
+		<a href="/options.html" target="_blank"><i class="fal fa-cog"></i> 设置</a>
 	</footer>
 
-	<script src="js/new_tab.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="js/new_tab2.js"></script>
 </body>
 
 </html>
