@@ -1,0 +1,34 @@
+/**
+ * new_tab.html 样式
+ */
+main {
+  flex-grow: 1;
+}
+
+.tab {
+  opacity: .5;
+}
+
+.tab.active {
+  opacity: 1;
+}
+
+.item-link {
+  display: flex;
+  align-items: flex-start;
+}
+
+.action-delete {
+  margin-left: auto;
+  display: none;
+}
+
+.active .action-delete {
+  display: block;
+}
+
+#new_tab header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

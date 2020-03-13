@@ -59,7 +59,27 @@ var app = new Vue({
 
         // 输出浏览器收藏夹
         parse_bookmark() {
+            // 获取所有收藏夹数据 https://developer.chrome.com/extensions/bookmarks
+            chrome.bookmarks.getTree(root => {
+                // console.log(root)
+                this.bookmarks = root.shift().children
+                console.log('bookmarks: ', this.bookmarks)
+            })
+        },
 
+        // 生成链接title属性值
+        compose_bookmark_title(item) {
+            let title = 'ID' + item.id
+            title += ' / 收藏于' + new Date(item.dateAdded).toLocaleString()
+            return title
+        },
+
+        // 清除收藏项
+        clear_bookmark(id) {
+            if (confirm('删除此书签？')) chrome.bookmarks.remove(id, () => {
+                console.log('bookmark with id: ' + id + 'is removed')
+                this.parse_bookmark()
+            })
         },
 
         // 输出浏览历史

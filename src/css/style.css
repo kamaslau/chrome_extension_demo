@@ -92,31 +92,3 @@ main {
 .item-ops li {
     flex-grow: 1;
 }
-
-/**
- * new_tab.html 样式
- */
-main {
-    flex-grow: 1;
-}
-
-.tab {
-    opacity: .5;
-}
-
-.tab.col-6 {
-    opacity: 1;
-}
-
-.item-link {
-    display: flex;
-    align-items: flex-start;
-}
-
-.action-delete {
-    margin-left: auto;
-}
-
-.col .action-delete {
-    display: none
-}
